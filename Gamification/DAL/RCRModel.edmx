@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OraDocCap_PruebasModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="OraDocCap_PruebasModelStoreContainer">
+          <EntitySet Name="gamif_user" EntityType="OraDocCap_PruebasModel.Store.gamif_user" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="RCR" EntityType="OraDocCap_PruebasModel.Store.RCR" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+        </EntityContainer>
+        <EntityType Name="gamif_user">
+          <Key>
+            <PropertyRef Name="peis_id" />
+          </Key>
+          <Property Name="username" Type="varchar(max)" Nullable="false" />
+          <Property Name="peis_id" Type="int" Nullable="false" />
+          <Property Name="user_avatar" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RCR">
+          <Key>
+            <PropertyRef Name="Número" />
+          </Key>
+          <Property Name="Tipo RCR" Type="nchar" MaxLength="250" />
+          <Property Name="Categoria / Proceso / Rol" Type="nchar" MaxLength="250" />
+          <Property Name="Aplicación / Sub Proceso / Sub Rol&#xD;&#xA;Aplicación / Sub Proceso / Sub Rol&#xD;&#xA;Aplicación / Sub Proceso / Sub Rol" Type="nchar" MaxLength="250" />
+          <Property Name="Estado&#xD;&#xA;Estado" Type="nchar" MaxLength="100" />
+          <Property Name="Solicitante" Type="nchar" MaxLength="100" />
+          <Property Name="Key User" Type="nchar" MaxLength="100" />
+          <Property Name="BPO" Type="nchar" MaxLength="100" />
+          <Property Name="Número" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="Concepto" Type="nchar" MaxLength="1000" />
+          <Property Name="Controller" Type="nchar" MaxLength="100" />
+          <Property Name="Analista FACT" Type="nchar" MaxLength="100" />
+          <Property Name="Fechas Generación" Type="datetime" />
+          <Property Name="Criticidad&#xD;&#xA;Criticidad" Type="nchar" MaxLength="100" />
+          <Property Name="Complejidad" Type="nchar" MaxLength="100" />
+          <Property Name="Fec/Hora Inicio Indicador 1: Acuse de Recibo (Controller)" Type="datetime" Nullable="false" />
+          <Property Name="Fecha Limite Indicador 1&#xD;&#xA;Fecha Limite Indicador 1" Type="datetime" />
+          <Property Name="Fec/Hora Fin Indicador 1: Acuse de Recibo" Type="datetime" />
+          <Property Name="Fecha Planificada de Inicio Estudio Factibilidad" Type="datetime" />
+          <Property Name="Fecha Planificada de Entrega Estudio Factibilidad (Ind.2)" Type="datetime" />
+          <Property Name="Se solicitó mayor información a solicitante" Type="nchar" MaxLength="100" />
+          <Property Name="Fec/hora envio a solicitante para información adicional" Type="datetime" />
+          <Property Name="Fec/hora recepción de info por parte del solicitante" Type="datetime" />
+          <Property Name="Requiere SF?" Type="nchar" MaxLength="10" />
+          <Property Name="Fec/hora envio a SF para estimación" Type="datetime" />
+          <Property Name="Fec/Hora recepción de estimación de esfuerzo SF" Type="datetime" />
+          <Property Name="Fecha de entrega Estudio Factibilidad (Ind 2)" Type="datetime" />
+          <Property Name="Fecha Planificada de Inicio Mejora Contínua" Type="datetime" />
+          <Property Name="Fecha Planificada de Entrega Mejora Contínua (Ind.3)" Type="datetime" />
+          <Property Name="Analista Mejora Contínua&#xD;&#xA;Analista Mejora Contínua&#xD;&#xA;Analista Mejora Contínua" Type="nchar" MaxLength="100" />
+          <Property Name="¿Requiere SF&#xD;&#xA;¿Requiere SF?&#xD;&#xA;¿Requiere SF?&#xD;&#xA;¿Requiere SF?" Type="nchar" MaxLength="10" />
+          <Property Name="Fec.Hora entrega Espec.Funcional (analista)&#xD;&#xA;Fec.Hora entrega Espec.Funcional (analista)" Type="datetime" />
+          <Property Name="Fec.Hora Aprobación EF (controller)" Type="datetime" />
+          <Property Name="Fec.hora Aprobación EF (Solicitante)" Type="datetime" />
+          <Property Name="Fec.hora Documento de Pruebas (analista)" Type="datetime" />
+          <Property Name="Fec.hora Revalidar fecha de entrega (SF)" Type="datetime" />
+          <Property Name="Fecha definitiva de Entrega Mejora Contínua (Ind.3)" Type="datetime" />
+          <Property Name="Fec.hora ET (Analista/SF)" Type="datetime" />
+          <Property Name="Fec.hora Desarrollo y Pruebas (SF)" Type="datetime" />
+          <Property Name="Fec.hora Pruebas (Analista)" Type="datetime" />
+          <Property Name="Fec.hora Pruebas (Usuario)" Type="datetime" />
+          <Property Name="Fec.hora Gestión Pase a Prod (Ind.3)" Type="datetime" />
+          <Property Name="Fec.hora Pase a Prod (CSOPE)" Type="datetime" />
+          <Property Name="Fec.hora capacitación 2" Type="datetime" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OraDocCap_PruebasModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="OraDocCap_PruebasEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="RCR" EntityType="OraDocCap_PruebasModel.RCR" />
+          <EntitySet Name="gamif_user" EntityType="OraDocCap_PruebasModel.gamif_user" />
+        </EntityContainer>
+        <EntityType Name="RCR">
+          <Key>
+            <PropertyRef Name="Número" />
+          </Key>
+          <Property Name="Tipo_RCR" Type="String" MaxLength="250" Unicode="true" FixedLength="true" />
+          <Property Name="Categoria___Proceso___Rol" Type="String" MaxLength="250" Unicode="true" FixedLength="true" />
+          <Property Name="Aplicación___Sub_Proceso___Sub_Rol__Aplicación___Sub_Proceso___Sub_Rol__Aplicación___Sub_Proceso___Sub_Rol" Type="String" MaxLength="250" Unicode="true" FixedLength="true" />
+          <Property Name="Estado__Estado" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="Solicitante" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="Key_User" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="BPO" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="Número" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="Concepto" Type="String" MaxLength="1000" Unicode="true" FixedLength="true" />
+          <Property Name="Controller" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="Analista_FACT" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="Fechas_Generación" Type="DateTime" Precision="3" />
+          <Property Name="Criticidad__Criticidad" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="Complejidad" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="Fec_Hora_Inicio_Indicador_1__Acuse_de_Recibo__Controller_" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fecha_Limite_Indicador_1__Fecha_Limite_Indicador_1" Type="DateTime" Precision="3" />
+          <Property Name="Fec_Hora_Fin_Indicador_1__Acuse_de_Recibo" Type="DateTime" Precision="3" />
+          <Property Name="Fecha_Planificada_de_Inicio_Estudio_Factibilidad" Type="DateTime" Precision="3" />
+          <Property Name="Fecha_Planificada_de_Entrega_Estudio_Factibilidad__Ind_2_" Type="DateTime" Precision="3" />
+          <Property Name="Se_solicitó_mayor_información_a_solicitante" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="Fec_hora_envio_a_solicitante_para_información_adicional" Type="DateTime" Precision="3" />
+          <Property Name="Fec_hora_recepción_de_info_por_parte_del_solicitante" Type="DateTime" Precision="3" />
+          <Property Name="Requiere_SF_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Fec_hora_envio_a_SF_para_estimación" Type="DateTime" Precision="3" />
+          <Property Name="Fec_Hora_recepción_de_estimación_de_esfuerzo_SF" Type="DateTime" Precision="3" />
+          <Property Name="Fecha_de_entrega_Estudio_Factibilidad__Ind_2_" Type="DateTime" Precision="3" />
+          <Property Name="Fecha_Planificada_de_Inicio_Mejora_Contínua" Type="DateTime" Precision="3" />
+          <Property Name="Fecha_Planificada_de_Entrega_Mejora_Contínua__Ind_3_" Type="DateTime" Precision="3" />
+          <Property Name="Analista_Mejora_Contínua__Analista_Mejora_Contínua__Analista_Mejora_Contínua" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="C_Requiere_SF___Requiere_SF____Requiere_SF____Requiere_SF_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Fec_Hora_entrega_Espec_Funcional__analista___Fec_Hora_entrega_Espec_Funcional__analista_" Type="DateTime" Precision="3" />
+          <Property Name="Fec_Hora_Aprobación_EF__controller_" Type="DateTime" Precision="3" />
+          <Property Name="Fec_hora_Aprobación_EF__Solicitante_" Type="DateTime" Precision="3" />
+          <Property Name="Fec_hora_Documento_de_Pruebas__analista_" Type="DateTime" Precision="3" />
+          <Property Name="Fec_hora_Revalidar_fecha_de_entrega__SF_" Type="DateTime" Precision="3" />
+          <Property Name="Fecha_definitiva_de_Entrega_Mejora_Contínua__Ind_3_" Type="DateTime" Precision="3" />
+          <Property Name="Fec_hora_ET__Analista_SF_" Type="DateTime" Precision="3" />
+          <Property Name="Fec_hora_Desarrollo_y_Pruebas__SF_" Type="DateTime" Precision="3" />
+          <Property Name="Fec_hora_Pruebas__Analista_" Type="DateTime" Precision="3" />
+          <Property Name="Fec_hora_Pruebas__Usuario_" Type="DateTime" Precision="3" />
+          <Property Name="Fec_hora_Gestión_Pase_a_Prod__Ind_3_" Type="DateTime" Precision="3" />
+          <Property Name="Fec_hora_Pase_a_Prod__CSOPE_" Type="DateTime" Precision="3" />
+          <Property Name="Fec_hora_capacitación_2" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="gamif_user">
+          <Key>
+            <PropertyRef Name="peis_id" />
+          </Key>
+          <Property Type="String" Name="username" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="peis_id" Nullable="false" />
+          <Property Type="String" Name="user_avatar" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OraDocCap_PruebasModelStoreContainer" CdmEntityContainer="OraDocCap_PruebasEntities">
+          <EntitySetMapping Name="RCR">
+            <EntityTypeMapping TypeName="OraDocCap_PruebasModel.RCR">
+              <MappingFragment StoreEntitySet="RCR">
+                <ScalarProperty Name="Tipo_RCR" ColumnName="Tipo RCR" />
+                <ScalarProperty Name="Categoria___Proceso___Rol" ColumnName="Categoria / Proceso / Rol" />
+                <ScalarProperty Name="Aplicación___Sub_Proceso___Sub_Rol__Aplicación___Sub_Proceso___Sub_Rol__Aplicación___Sub_Proceso___Sub_Rol" ColumnName="Aplicación / Sub Proceso / Sub Rol&#xD;&#xA;Aplicación / Sub Proceso / Sub Rol&#xD;&#xA;Aplicación / Sub Proceso / Sub Rol" />
+                <ScalarProperty Name="Estado__Estado" ColumnName="Estado&#xD;&#xA;Estado" />
+                <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+                <ScalarProperty Name="Key_User" ColumnName="Key User" />
+                <ScalarProperty Name="BPO" ColumnName="BPO" />
+                <ScalarProperty Name="Número" ColumnName="Número" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="Analista_FACT" ColumnName="Analista FACT" />
+                <ScalarProperty Name="Fechas_Generación" ColumnName="Fechas Generación" />
+                <ScalarProperty Name="Criticidad__Criticidad" ColumnName="Criticidad&#xD;&#xA;Criticidad" />
+                <ScalarProperty Name="Complejidad" ColumnName="Complejidad" />
+                <ScalarProperty Name="Fec_Hora_Inicio_Indicador_1__Acuse_de_Recibo__Controller_" ColumnName="Fec/Hora Inicio Indicador 1: Acuse de Recibo (Controller)" />
+                <ScalarProperty Name="Fecha_Limite_Indicador_1__Fecha_Limite_Indicador_1" ColumnName="Fecha Limite Indicador 1&#xD;&#xA;Fecha Limite Indicador 1" />
+                <ScalarProperty Name="Fec_Hora_Fin_Indicador_1__Acuse_de_Recibo" ColumnName="Fec/Hora Fin Indicador 1: Acuse de Recibo" />
+                <ScalarProperty Name="Fecha_Planificada_de_Inicio_Estudio_Factibilidad" ColumnName="Fecha Planificada de Inicio Estudio Factibilidad" />
+                <ScalarProperty Name="Fecha_Planificada_de_Entrega_Estudio_Factibilidad__Ind_2_" ColumnName="Fecha Planificada de Entrega Estudio Factibilidad (Ind.2)" />
+                <ScalarProperty Name="Se_solicitó_mayor_información_a_solicitante" ColumnName="Se solicitó mayor información a solicitante" />
+                <ScalarProperty Name="Fec_hora_envio_a_solicitante_para_información_adicional" ColumnName="Fec/hora envio a solicitante para información adicional" />
+                <ScalarProperty Name="Fec_hora_recepción_de_info_por_parte_del_solicitante" ColumnName="Fec/hora recepción de info por parte del solicitante" />
+                <ScalarProperty Name="Requiere_SF_" ColumnName="Requiere SF?" />
+                <ScalarProperty Name="Fec_hora_envio_a_SF_para_estimación" ColumnName="Fec/hora envio a SF para estimación" />
+                <ScalarProperty Name="Fec_Hora_recepción_de_estimación_de_esfuerzo_SF" ColumnName="Fec/Hora recepción de estimación de esfuerzo SF" />
+                <ScalarProperty Name="Fecha_de_entrega_Estudio_Factibilidad__Ind_2_" ColumnName="Fecha de entrega Estudio Factibilidad (Ind 2)" />
+                <ScalarProperty Name="Fecha_Planificada_de_Inicio_Mejora_Contínua" ColumnName="Fecha Planificada de Inicio Mejora Contínua" />
+                <ScalarProperty Name="Fecha_Planificada_de_Entrega_Mejora_Contínua__Ind_3_" ColumnName="Fecha Planificada de Entrega Mejora Contínua (Ind.3)" />
+                <ScalarProperty Name="Analista_Mejora_Contínua__Analista_Mejora_Contínua__Analista_Mejora_Contínua" ColumnName="Analista Mejora Contínua&#xD;&#xA;Analista Mejora Contínua&#xD;&#xA;Analista Mejora Contínua" />
+                <ScalarProperty Name="C_Requiere_SF___Requiere_SF____Requiere_SF____Requiere_SF_" ColumnName="¿Requiere SF&#xD;&#xA;¿Requiere SF?&#xD;&#xA;¿Requiere SF?&#xD;&#xA;¿Requiere SF?" />
+                <ScalarProperty Name="Fec_Hora_entrega_Espec_Funcional__analista___Fec_Hora_entrega_Espec_Funcional__analista_" ColumnName="Fec.Hora entrega Espec.Funcional (analista)&#xD;&#xA;Fec.Hora entrega Espec.Funcional (analista)" />
+                <ScalarProperty Name="Fec_Hora_Aprobación_EF__controller_" ColumnName="Fec.Hora Aprobación EF (controller)" />
+                <ScalarProperty Name="Fec_hora_Aprobación_EF__Solicitante_" ColumnName="Fec.hora Aprobación EF (Solicitante)" />
+                <ScalarProperty Name="Fec_hora_Documento_de_Pruebas__analista_" ColumnName="Fec.hora Documento de Pruebas (analista)" />
+                <ScalarProperty Name="Fec_hora_Revalidar_fecha_de_entrega__SF_" ColumnName="Fec.hora Revalidar fecha de entrega (SF)" />
+                <ScalarProperty Name="Fecha_definitiva_de_Entrega_Mejora_Contínua__Ind_3_" ColumnName="Fecha definitiva de Entrega Mejora Contínua (Ind.3)" />
+                <ScalarProperty Name="Fec_hora_ET__Analista_SF_" ColumnName="Fec.hora ET (Analista/SF)" />
+                <ScalarProperty Name="Fec_hora_Desarrollo_y_Pruebas__SF_" ColumnName="Fec.hora Desarrollo y Pruebas (SF)" />
+                <ScalarProperty Name="Fec_hora_Pruebas__Analista_" ColumnName="Fec.hora Pruebas (Analista)" />
+                <ScalarProperty Name="Fec_hora_Pruebas__Usuario_" ColumnName="Fec.hora Pruebas (Usuario)" />
+                <ScalarProperty Name="Fec_hora_Gestión_Pase_a_Prod__Ind_3_" ColumnName="Fec.hora Gestión Pase a Prod (Ind.3)" />
+                <ScalarProperty Name="Fec_hora_Pase_a_Prod__CSOPE_" ColumnName="Fec.hora Pase a Prod (CSOPE)" />
+                <ScalarProperty Name="Fec_hora_capacitación_2" ColumnName="Fec.hora capacitación 2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gamif_user">
+            <EntityTypeMapping TypeName="OraDocCap_PruebasModel.gamif_user">
+              <MappingFragment StoreEntitySet="gamif_user">
+                <ScalarProperty Name="user_avatar" ColumnName="user_avatar" />
+                <ScalarProperty Name="peis_id" ColumnName="peis_id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>

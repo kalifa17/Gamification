@@ -1,0 +1,570 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PEIS_DATABASEModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="PEIS_DATABASEModelStoreContainer">
+          <EntitySet Name="GTAssignment" EntityType="PEIS_DATABASEModel.Store.GTAssignment" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="GTResource" EntityType="PEIS_DATABASEModel.Store.GTResource" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="GTTimeEntry" EntityType="PEIS_DATABASEModel.Store.GTTimeEntry" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="GTTimePeriod" EntityType="PEIS_DATABASEModel.Store.GTTimePeriod" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="GTTimeSheet" EntityType="PEIS_DATABASEModel.Store.GTTimeSheet" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+        </EntityContainer>
+        <EntityType Name="GTAssignment">
+          <Key>
+            <PropertyRef Name="gtID" />
+          </Key>
+          <Property Name="gtID" Type="numeric" Nullable="false" Precision="16" StoreGeneratedPattern="Identity" />
+          <Property Name="gtExternalID" Type="numeric" Precision="16" />
+          <Property Name="gtTaskIntID" Type="numeric" Precision="16" />
+          <Property Name="gtResourceID" Type="nvarchar" MaxLength="16" />
+          <Property Name="gtProjectID" Type="nvarchar" MaxLength="16" />
+          <Property Name="gtCurStartDate" Type="datetime" />
+          <Property Name="gtCurFinishDate" Type="datetime" />
+          <Property Name="gtStatus" Type="smallint" />
+          <Property Name="gtIsDeleted" Type="smallint" />
+          <Property Name="gtETCHour" Type="numeric" Precision="12" />
+        </EntityType>
+        <EntityType Name="GTResource">
+          <Key>
+            <PropertyRef Name="gtExternalID" />
+          </Key>
+          <Property Name="gtID" Type="numeric" Nullable="false" Precision="16" StoreGeneratedPattern="Identity" />
+          <Property Name="gtExternalID" Type="nvarchar" Nullable="false" MaxLength="16" />
+          <Property Name="gtCategory" Type="nvarchar" MaxLength="6" />
+          <Property Name="gtName" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="gtUnit" Type="numeric" Precision="6" />
+          <Property Name="gtCount" Type="smallint" />
+          <Property Name="gtDOH" Type="datetime" />
+          <Property Name="gtDOT" Type="datetime" />
+          <Property Name="gtIsRole" Type="smallint" />
+          <Property Name="gtUserText1" Type="nvarchar" MaxLength="6" />
+          <Property Name="gtUserText2" Type="nvarchar" MaxLength="6" />
+          <Property Name="gtUserText3" Type="nvarchar" MaxLength="6" />
+          <Property Name="gtUserID" Type="nvarchar" MaxLength="64" />
+          <Property Name="gtUserPWD" Type="nvarchar" MaxLength="64" />
+          <Property Name="gtTeam" Type="smallint" />
+          <Property Name="gtTaskInsert" Type="smallint" />
+          <Property Name="gtTaskDelete" Type="smallint" />
+          <Property Name="gtTaskSplit" Type="smallint" />
+          <Property Name="gtTaskNotes" Type="smallint" />
+          <Property Name="gtNotInSource" Type="smallint" />
+          <Property Name="gtAvail" Type="image" />
+          <Property Name="gtExtCode" Type="nvarchar" MaxLength="16" />
+          <Property Name="gtInProcess" Type="smallint" />
+          <Property Name="gtBOCCalendar" Type="smallint" />
+          <Property Name="gtEMail" Type="nvarchar" MaxLength="64" />
+          <Property Name="gtUnitLabel" Type="nvarchar" MaxLength="32" />
+          <Property Name="gtCheckOvercommit" Type="smallint" />
+          <Property Name="gtMaxUnitsWeek" Type="numeric" Precision="12" />
+          <Property Name="gtInstanceID" Type="nvarchar" MaxLength="6" />
+          <Property Name="gtIsAvailable" Type="smallint" />
+          <Property Name="gtCustomText1" Type="nvarchar" MaxLength="64" />
+          <Property Name="gtCustomText2" Type="nvarchar" MaxLength="64" />
+          <Property Name="gtCustomNumber1" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtCustomNumber2" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtCustomDate1" Type="datetime" />
+          <Property Name="gtCustomDate2" Type="datetime" />
+          <Property Name="gtCustomColor1" Type="smallint" />
+          <Property Name="gtCustomColor2" Type="smallint" />
+          <Property Name="gtCustomLV1" Type="nvarchar" MaxLength="6" />
+          <Property Name="gtCustomLV2" Type="nvarchar" MaxLength="6" />
+          <Property Name="gtLanguage" Type="numeric" Precision="6" />
+          <Property Name="gtOrganization" Type="nvarchar" MaxLength="10" />
+          <Property Name="gtEnableDownloadGuideline" Type="smallint" />
+          <Property Name="gtEnableDeleteInsertedTask" Type="smallint" />
+          <Property Name="gtCreatedUser" Type="nvarchar" MaxLength="64" />
+          <Property Name="gtCreatedDate" Type="datetime" />
+          <Property Name="gtLockedBy" Type="nvarchar" MaxLength="64" />
+          <Property Name="gtLockedByDate" Type="datetime" />
+          <Property Name="gtLastUpdateUser" Type="nvarchar" MaxLength="64" />
+          <Property Name="gtLastUpdateDate" Type="datetime" />
+          <Property Name="gtEnableEditRisks" Type="smallint" />
+          <Property Name="gtEnableEditLessons" Type="smallint" />
+          <Property Name="gtEnableEditProblems" Type="smallint" />
+          <Property Name="gtEnableEditNews" Type="smallint" />
+          <Property Name="gtEnableDownloadForms" Type="smallint" />
+          <Property Name="gtProcessToUnlock" Type="varchar" MaxLength="128" />
+          <Property Name="gtEnableAddDoc" Type="smallint" />
+          <Property Name="gtEnableNews" Type="smallint" />
+          <Property Name="gtEnableViewDoc" Type="smallint" />
+          <Property Name="gtEnableKB" Type="smallint" />
+          <Property Name="gtEnableKBEdit" Type="smallint" />
+          <Property Name="gtTRLockEdit" Type="smallint" />
+          <Property Name="gtTREnableWBS" Type="smallint" />
+          <Property Name="gtTRMaxDailyActuals" Type="smallint" />
+          <Property Name="gtEnableEditProposed" Type="smallint" />
+          <Property Name="gtProcSiteID" Type="numeric" Precision="16" />
+          <Property Name="gtOverCommitted" Type="smallint" />
+          <Property Name="gtCustomLV3" Type="nvarchar" MaxLength="12" />
+          <Property Name="gtCustomLV4" Type="nvarchar" MaxLength="12" />
+          <Property Name="gtEnableViewProjDocs" Type="smallint" />
+          <Property Name="gtEnableApproveTR" Type="smallint" />
+          <Property Name="gtLastConnectionDate" Type="datetime" />
+          <Property Name="gtPEISConnected" Type="smallint" />
+        </EntityType>
+        <EntityType Name="GTTimeEntry">
+          <Key>
+            <PropertyRef Name="gtID" />
+          </Key>
+          <Property Name="gtID" Type="numeric" Nullable="false" Precision="16" StoreGeneratedPattern="Identity" />
+          <Property Name="gtTimeSheetID" Type="numeric" Precision="16" />
+          <Property Name="gtAssignmentID" Type="numeric" Precision="16" />
+          <Property Name="gtActualDay1" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtActualDay2" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtActualDay3" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtActualDay4" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtActualDay5" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtActualDay6" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtActualDay7" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtActualWeek" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay1" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay2" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay3" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay4" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay5" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay6" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay7" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtPlanWeek" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtPlanTask" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtUserText1" Type="varchar" MaxLength="16" />
+          <Property Name="gtUserText2" Type="varchar" MaxLength="16" />
+          <Property Name="gtMngrComments" Type="nvarchar" MaxLength="255" />
+          <Property Name="gtUserComments" Type="nvarchar" MaxLength="255" />
+          <Property Name="gtProposedETC" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtNotes" Type="text" />
+          <Property Name="gtHasNotes" Type="smallint" />
+          <Property Name="gtStatus" Type="smallint" />
+          <Property Name="gtPercentComplete" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtInsertedTask" Type="smallint" />
+          <Property Name="gtAppUser" Type="varchar" MaxLength="64" />
+          <Property Name="gtAppDate" Type="datetime" />
+          <Property Name="gtAdjUser" Type="varchar" MaxLength="16" />
+          <Property Name="gtAdjDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GTTimePeriod">
+          <Key>
+            <PropertyRef Name="gtID" />
+          </Key>
+          <Property Name="gtID" Type="numeric" Nullable="false" Precision="16" StoreGeneratedPattern="Identity" />
+          <Property Name="gtStart" Type="datetime" />
+          <Property Name="gtFinish" Type="datetime" />
+          <Property Name="gtStatus" Type="smallint" />
+          <Property Name="gtStatusDate" Type="datetime" />
+          <Property Name="gtStatusBy" Type="varchar" MaxLength="255" />
+          <Property Name="gtIsOpen" Type="smallint" />
+          <Property Name="gtDoPopulate" Type="smallint" />
+          <Property Name="gtDoPost" Type="smallint" />
+          <Property Name="gtCreatedUser" Type="varchar" MaxLength="64" />
+          <Property Name="gtCreatedDate" Type="datetime" />
+          <Property Name="gtLockedBy" Type="varchar" MaxLength="64" />
+          <Property Name="gtLockedByDate" Type="datetime" />
+          <Property Name="gtLastUpdateUser" Type="varchar" MaxLength="64" />
+          <Property Name="gtLastUpdateDate" Type="datetime" />
+          <Property Name="gtDoReplicate" Type="smallint" />
+        </EntityType>
+        <EntityType Name="GTTimeSheet">
+          <Key>
+            <PropertyRef Name="gtID" />
+          </Key>
+          <Property Name="gtID" Type="numeric" Nullable="false" Precision="16" StoreGeneratedPattern="Identity" />
+          <Property Name="gtTimePeriodID" Type="numeric" Nullable="false" Precision="16" />
+          <Property Name="gtResourceID" Type="numeric" Nullable="false" Precision="16" />
+          <Property Name="gtStatus" Type="smallint" />
+          <Property Name="gtMngrComments" Type="nvarchar" MaxLength="255" />
+          <Property Name="gtUserComments" Type="nvarchar" MaxLength="255" />
+          <Property Name="gtTotalHour" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="gtInstanceID" Type="varchar" MaxLength="16" />
+          <Property Name="gtTRReview" Type="smallint" />
+          <Property Name="gtTotalPlan" Type="numeric" Precision="16" Scale="2" />
+          <Property Name="gtTaskDelay" Type="smallint" />
+          <Property Name="gtTaskProposed" Type="smallint" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PEIS_DATABASEModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="PEIS_DATABASEEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="GTAssignment" EntityType="PEIS_DATABASEModel.GTAssignment" />
+          <EntitySet Name="GTResource" EntityType="PEIS_DATABASEModel.GTResource" />
+          <EntitySet Name="GTTimeEntry" EntityType="PEIS_DATABASEModel.GTTimeEntry" />
+          <EntitySet Name="GTTimePeriod" EntityType="PEIS_DATABASEModel.GTTimePeriod" />
+          <EntitySet Name="GTTimeSheet" EntityType="PEIS_DATABASEModel.GTTimeSheet" />
+        </EntityContainer>
+        <EntityType Name="GTAssignment">
+          <Key>
+            <PropertyRef Name="gtID" />
+          </Key>
+          <Property Name="gtID" Type="Decimal" Nullable="false" Precision="16" Scale="0" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="gtExternalID" Type="Decimal" Precision="16" Scale="0" />
+          <Property Name="gtTaskIntID" Type="Decimal" Precision="16" Scale="0" />
+          <Property Name="gtResourceID" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="gtProjectID" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="gtCurStartDate" Type="DateTime" Precision="3" />
+          <Property Name="gtCurFinishDate" Type="DateTime" Precision="3" />
+          <Property Name="gtStatus" Type="Int16" />
+          <Property Name="gtIsDeleted" Type="Int16" />
+          <Property Name="gtETCHour" Type="Decimal" Precision="12" Scale="0" />
+        </EntityType>
+        <EntityType Name="GTResource">
+          <Key>
+            <PropertyRef Name="gtExternalID" />
+          </Key>
+          <Property Name="gtID" Type="Decimal" Nullable="false" Precision="16" Scale="0" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="gtExternalID" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="gtCategory" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="gtName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="gtUnit" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="gtCount" Type="Int16" />
+          <Property Name="gtDOH" Type="DateTime" Precision="3" />
+          <Property Name="gtDOT" Type="DateTime" Precision="3" />
+          <Property Name="gtIsRole" Type="Int16" />
+          <Property Name="gtUserText1" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="gtUserText2" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="gtUserText3" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="gtUserID" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="gtUserPWD" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="gtTeam" Type="Int16" />
+          <Property Name="gtTaskInsert" Type="Int16" />
+          <Property Name="gtTaskDelete" Type="Int16" />
+          <Property Name="gtTaskSplit" Type="Int16" />
+          <Property Name="gtTaskNotes" Type="Int16" />
+          <Property Name="gtNotInSource" Type="Int16" />
+          <Property Name="gtAvail" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="gtExtCode" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="gtInProcess" Type="Int16" />
+          <Property Name="gtBOCCalendar" Type="Int16" />
+          <Property Name="gtEMail" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="gtUnitLabel" Type="String" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="gtCheckOvercommit" Type="Int16" />
+          <Property Name="gtMaxUnitsWeek" Type="Decimal" Precision="12" Scale="0" />
+          <Property Name="gtInstanceID" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="gtIsAvailable" Type="Int16" />
+          <Property Name="gtCustomText1" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="gtCustomText2" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="gtCustomNumber1" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtCustomNumber2" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtCustomDate1" Type="DateTime" Precision="3" />
+          <Property Name="gtCustomDate2" Type="DateTime" Precision="3" />
+          <Property Name="gtCustomColor1" Type="Int16" />
+          <Property Name="gtCustomColor2" Type="Int16" />
+          <Property Name="gtCustomLV1" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="gtCustomLV2" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="gtLanguage" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="gtOrganization" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="gtEnableDownloadGuideline" Type="Int16" />
+          <Property Name="gtEnableDeleteInsertedTask" Type="Int16" />
+          <Property Name="gtCreatedUser" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="gtCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="gtLockedBy" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="gtLockedByDate" Type="DateTime" Precision="3" />
+          <Property Name="gtLastUpdateUser" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="gtLastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="gtEnableEditRisks" Type="Int16" />
+          <Property Name="gtEnableEditLessons" Type="Int16" />
+          <Property Name="gtEnableEditProblems" Type="Int16" />
+          <Property Name="gtEnableEditNews" Type="Int16" />
+          <Property Name="gtEnableDownloadForms" Type="Int16" />
+          <Property Name="gtProcessToUnlock" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="gtEnableAddDoc" Type="Int16" />
+          <Property Name="gtEnableNews" Type="Int16" />
+          <Property Name="gtEnableViewDoc" Type="Int16" />
+          <Property Name="gtEnableKB" Type="Int16" />
+          <Property Name="gtEnableKBEdit" Type="Int16" />
+          <Property Name="gtTRLockEdit" Type="Int16" />
+          <Property Name="gtTREnableWBS" Type="Int16" />
+          <Property Name="gtTRMaxDailyActuals" Type="Int16" />
+          <Property Name="gtEnableEditProposed" Type="Int16" />
+          <Property Name="gtProcSiteID" Type="Decimal" Precision="16" Scale="0" />
+          <Property Name="gtOverCommitted" Type="Int16" />
+          <Property Name="gtCustomLV3" Type="String" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="gtCustomLV4" Type="String" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="gtEnableViewProjDocs" Type="Int16" />
+          <Property Name="gtEnableApproveTR" Type="Int16" />
+          <Property Name="gtLastConnectionDate" Type="DateTime" Precision="3" />
+          <Property Name="gtPEISConnected" Type="Int16" />
+        </EntityType>
+        <EntityType Name="GTTimeEntry">
+          <Key>
+            <PropertyRef Name="gtID" />
+          </Key>
+          <Property Name="gtID" Type="Decimal" Nullable="false" Precision="16" Scale="0" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="gtTimeSheetID" Type="Decimal" Precision="16" Scale="0" />
+          <Property Name="gtAssignmentID" Type="Decimal" Precision="16" Scale="0" />
+          <Property Name="gtActualDay1" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtActualDay2" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtActualDay3" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtActualDay4" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtActualDay5" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtActualDay6" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtActualDay7" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtActualWeek" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay1" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay2" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay3" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay4" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay5" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay6" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtPlanDay7" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtPlanWeek" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtPlanTask" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtUserText1" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
+          <Property Name="gtUserText2" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
+          <Property Name="gtMngrComments" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gtUserComments" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gtProposedETC" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtNotes" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="gtHasNotes" Type="Int16" />
+          <Property Name="gtStatus" Type="Int16" />
+          <Property Name="gtPercentComplete" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtInsertedTask" Type="Int16" />
+          <Property Name="gtAppUser" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="gtAppDate" Type="DateTime" Precision="3" />
+          <Property Name="gtAdjUser" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
+          <Property Name="gtAdjDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="GTTimePeriod">
+          <Key>
+            <PropertyRef Name="gtID" />
+          </Key>
+          <Property Name="gtID" Type="Decimal" Nullable="false" Precision="16" Scale="0" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="gtStart" Type="DateTime" Precision="3" />
+          <Property Name="gtFinish" Type="DateTime" Precision="3" />
+          <Property Name="gtStatus" Type="Int16" />
+          <Property Name="gtStatusDate" Type="DateTime" Precision="3" />
+          <Property Name="gtStatusBy" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="gtIsOpen" Type="Int16" />
+          <Property Name="gtDoPopulate" Type="Int16" />
+          <Property Name="gtDoPost" Type="Int16" />
+          <Property Name="gtCreatedUser" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="gtCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="gtLockedBy" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="gtLockedByDate" Type="DateTime" Precision="3" />
+          <Property Name="gtLastUpdateUser" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="gtLastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="gtDoReplicate" Type="Int16" />
+        </EntityType>
+        <EntityType Name="GTTimeSheet">
+          <Key>
+            <PropertyRef Name="gtID" />
+          </Key>
+          <Property Name="gtID" Type="Decimal" Nullable="false" Precision="16" Scale="0" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="gtTimePeriodID" Type="Decimal" Nullable="false" Precision="16" Scale="0" />
+          <Property Name="gtResourceID" Type="Decimal" Nullable="false" Precision="16" Scale="0" />
+          <Property Name="gtStatus" Type="Int16" />
+          <Property Name="gtMngrComments" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gtUserComments" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gtTotalHour" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="gtInstanceID" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
+          <Property Name="gtTRReview" Type="Int16" />
+          <Property Name="gtTotalPlan" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="gtTaskDelay" Type="Int16" />
+          <Property Name="gtTaskProposed" Type="Int16" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PEIS_DATABASEModelStoreContainer" CdmEntityContainer="PEIS_DATABASEEntities">
+          <EntitySetMapping Name="GTAssignment">
+            <EntityTypeMapping TypeName="PEIS_DATABASEModel.GTAssignment">
+              <MappingFragment StoreEntitySet="GTAssignment">
+                <ScalarProperty Name="gtID" ColumnName="gtID" />
+                <ScalarProperty Name="gtExternalID" ColumnName="gtExternalID" />
+                <ScalarProperty Name="gtTaskIntID" ColumnName="gtTaskIntID" />
+                <ScalarProperty Name="gtResourceID" ColumnName="gtResourceID" />
+                <ScalarProperty Name="gtProjectID" ColumnName="gtProjectID" />
+                <ScalarProperty Name="gtCurStartDate" ColumnName="gtCurStartDate" />
+                <ScalarProperty Name="gtCurFinishDate" ColumnName="gtCurFinishDate" />
+                <ScalarProperty Name="gtStatus" ColumnName="gtStatus" />
+                <ScalarProperty Name="gtIsDeleted" ColumnName="gtIsDeleted" />
+                <ScalarProperty Name="gtETCHour" ColumnName="gtETCHour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GTResource">
+            <EntityTypeMapping TypeName="PEIS_DATABASEModel.GTResource">
+              <MappingFragment StoreEntitySet="GTResource">
+                <ScalarProperty Name="gtID" ColumnName="gtID" />
+                <ScalarProperty Name="gtExternalID" ColumnName="gtExternalID" />
+                <ScalarProperty Name="gtCategory" ColumnName="gtCategory" />
+                <ScalarProperty Name="gtName" ColumnName="gtName" />
+                <ScalarProperty Name="gtUnit" ColumnName="gtUnit" />
+                <ScalarProperty Name="gtCount" ColumnName="gtCount" />
+                <ScalarProperty Name="gtDOH" ColumnName="gtDOH" />
+                <ScalarProperty Name="gtDOT" ColumnName="gtDOT" />
+                <ScalarProperty Name="gtIsRole" ColumnName="gtIsRole" />
+                <ScalarProperty Name="gtUserText1" ColumnName="gtUserText1" />
+                <ScalarProperty Name="gtUserText2" ColumnName="gtUserText2" />
+                <ScalarProperty Name="gtUserText3" ColumnName="gtUserText3" />
+                <ScalarProperty Name="gtUserID" ColumnName="gtUserID" />
+                <ScalarProperty Name="gtUserPWD" ColumnName="gtUserPWD" />
+                <ScalarProperty Name="gtTeam" ColumnName="gtTeam" />
+                <ScalarProperty Name="gtTaskInsert" ColumnName="gtTaskInsert" />
+                <ScalarProperty Name="gtTaskDelete" ColumnName="gtTaskDelete" />
+                <ScalarProperty Name="gtTaskSplit" ColumnName="gtTaskSplit" />
+                <ScalarProperty Name="gtTaskNotes" ColumnName="gtTaskNotes" />
+                <ScalarProperty Name="gtNotInSource" ColumnName="gtNotInSource" />
+                <ScalarProperty Name="gtAvail" ColumnName="gtAvail" />
+                <ScalarProperty Name="gtExtCode" ColumnName="gtExtCode" />
+                <ScalarProperty Name="gtInProcess" ColumnName="gtInProcess" />
+                <ScalarProperty Name="gtBOCCalendar" ColumnName="gtBOCCalendar" />
+                <ScalarProperty Name="gtEMail" ColumnName="gtEMail" />
+                <ScalarProperty Name="gtUnitLabel" ColumnName="gtUnitLabel" />
+                <ScalarProperty Name="gtCheckOvercommit" ColumnName="gtCheckOvercommit" />
+                <ScalarProperty Name="gtMaxUnitsWeek" ColumnName="gtMaxUnitsWeek" />
+                <ScalarProperty Name="gtInstanceID" ColumnName="gtInstanceID" />
+                <ScalarProperty Name="gtIsAvailable" ColumnName="gtIsAvailable" />
+                <ScalarProperty Name="gtCustomText1" ColumnName="gtCustomText1" />
+                <ScalarProperty Name="gtCustomText2" ColumnName="gtCustomText2" />
+                <ScalarProperty Name="gtCustomNumber1" ColumnName="gtCustomNumber1" />
+                <ScalarProperty Name="gtCustomNumber2" ColumnName="gtCustomNumber2" />
+                <ScalarProperty Name="gtCustomDate1" ColumnName="gtCustomDate1" />
+                <ScalarProperty Name="gtCustomDate2" ColumnName="gtCustomDate2" />
+                <ScalarProperty Name="gtCustomColor1" ColumnName="gtCustomColor1" />
+                <ScalarProperty Name="gtCustomColor2" ColumnName="gtCustomColor2" />
+                <ScalarProperty Name="gtCustomLV1" ColumnName="gtCustomLV1" />
+                <ScalarProperty Name="gtCustomLV2" ColumnName="gtCustomLV2" />
+                <ScalarProperty Name="gtLanguage" ColumnName="gtLanguage" />
+                <ScalarProperty Name="gtOrganization" ColumnName="gtOrganization" />
+                <ScalarProperty Name="gtEnableDownloadGuideline" ColumnName="gtEnableDownloadGuideline" />
+                <ScalarProperty Name="gtEnableDeleteInsertedTask" ColumnName="gtEnableDeleteInsertedTask" />
+                <ScalarProperty Name="gtCreatedUser" ColumnName="gtCreatedUser" />
+                <ScalarProperty Name="gtCreatedDate" ColumnName="gtCreatedDate" />
+                <ScalarProperty Name="gtLockedBy" ColumnName="gtLockedBy" />
+                <ScalarProperty Name="gtLockedByDate" ColumnName="gtLockedByDate" />
+                <ScalarProperty Name="gtLastUpdateUser" ColumnName="gtLastUpdateUser" />
+                <ScalarProperty Name="gtLastUpdateDate" ColumnName="gtLastUpdateDate" />
+                <ScalarProperty Name="gtEnableEditRisks" ColumnName="gtEnableEditRisks" />
+                <ScalarProperty Name="gtEnableEditLessons" ColumnName="gtEnableEditLessons" />
+                <ScalarProperty Name="gtEnableEditProblems" ColumnName="gtEnableEditProblems" />
+                <ScalarProperty Name="gtEnableEditNews" ColumnName="gtEnableEditNews" />
+                <ScalarProperty Name="gtEnableDownloadForms" ColumnName="gtEnableDownloadForms" />
+                <ScalarProperty Name="gtProcessToUnlock" ColumnName="gtProcessToUnlock" />
+                <ScalarProperty Name="gtEnableAddDoc" ColumnName="gtEnableAddDoc" />
+                <ScalarProperty Name="gtEnableNews" ColumnName="gtEnableNews" />
+                <ScalarProperty Name="gtEnableViewDoc" ColumnName="gtEnableViewDoc" />
+                <ScalarProperty Name="gtEnableKB" ColumnName="gtEnableKB" />
+                <ScalarProperty Name="gtEnableKBEdit" ColumnName="gtEnableKBEdit" />
+                <ScalarProperty Name="gtTRLockEdit" ColumnName="gtTRLockEdit" />
+                <ScalarProperty Name="gtTREnableWBS" ColumnName="gtTREnableWBS" />
+                <ScalarProperty Name="gtTRMaxDailyActuals" ColumnName="gtTRMaxDailyActuals" />
+                <ScalarProperty Name="gtEnableEditProposed" ColumnName="gtEnableEditProposed" />
+                <ScalarProperty Name="gtProcSiteID" ColumnName="gtProcSiteID" />
+                <ScalarProperty Name="gtOverCommitted" ColumnName="gtOverCommitted" />
+                <ScalarProperty Name="gtCustomLV3" ColumnName="gtCustomLV3" />
+                <ScalarProperty Name="gtCustomLV4" ColumnName="gtCustomLV4" />
+                <ScalarProperty Name="gtEnableViewProjDocs" ColumnName="gtEnableViewProjDocs" />
+                <ScalarProperty Name="gtEnableApproveTR" ColumnName="gtEnableApproveTR" />
+                <ScalarProperty Name="gtLastConnectionDate" ColumnName="gtLastConnectionDate" />
+                <ScalarProperty Name="gtPEISConnected" ColumnName="gtPEISConnected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GTTimeEntry">
+            <EntityTypeMapping TypeName="PEIS_DATABASEModel.GTTimeEntry">
+              <MappingFragment StoreEntitySet="GTTimeEntry">
+                <ScalarProperty Name="gtID" ColumnName="gtID" />
+                <ScalarProperty Name="gtTimeSheetID" ColumnName="gtTimeSheetID" />
+                <ScalarProperty Name="gtAssignmentID" ColumnName="gtAssignmentID" />
+                <ScalarProperty Name="gtActualDay1" ColumnName="gtActualDay1" />
+                <ScalarProperty Name="gtActualDay2" ColumnName="gtActualDay2" />
+                <ScalarProperty Name="gtActualDay3" ColumnName="gtActualDay3" />
+                <ScalarProperty Name="gtActualDay4" ColumnName="gtActualDay4" />
+                <ScalarProperty Name="gtActualDay5" ColumnName="gtActualDay5" />
+                <ScalarProperty Name="gtActualDay6" ColumnName="gtActualDay6" />
+                <ScalarProperty Name="gtActualDay7" ColumnName="gtActualDay7" />
+                <ScalarProperty Name="gtActualWeek" ColumnName="gtActualWeek" />
+                <ScalarProperty Name="gtPlanDay1" ColumnName="gtPlanDay1" />
+                <ScalarProperty Name="gtPlanDay2" ColumnName="gtPlanDay2" />
+                <ScalarProperty Name="gtPlanDay3" ColumnName="gtPlanDay3" />
+                <ScalarProperty Name="gtPlanDay4" ColumnName="gtPlanDay4" />
+                <ScalarProperty Name="gtPlanDay5" ColumnName="gtPlanDay5" />
+                <ScalarProperty Name="gtPlanDay6" ColumnName="gtPlanDay6" />
+                <ScalarProperty Name="gtPlanDay7" ColumnName="gtPlanDay7" />
+                <ScalarProperty Name="gtPlanWeek" ColumnName="gtPlanWeek" />
+                <ScalarProperty Name="gtPlanTask" ColumnName="gtPlanTask" />
+                <ScalarProperty Name="gtUserText1" ColumnName="gtUserText1" />
+                <ScalarProperty Name="gtUserText2" ColumnName="gtUserText2" />
+                <ScalarProperty Name="gtMngrComments" ColumnName="gtMngrComments" />
+                <ScalarProperty Name="gtUserComments" ColumnName="gtUserComments" />
+                <ScalarProperty Name="gtProposedETC" ColumnName="gtProposedETC" />
+                <ScalarProperty Name="gtNotes" ColumnName="gtNotes" />
+                <ScalarProperty Name="gtHasNotes" ColumnName="gtHasNotes" />
+                <ScalarProperty Name="gtStatus" ColumnName="gtStatus" />
+                <ScalarProperty Name="gtPercentComplete" ColumnName="gtPercentComplete" />
+                <ScalarProperty Name="gtInsertedTask" ColumnName="gtInsertedTask" />
+                <ScalarProperty Name="gtAppUser" ColumnName="gtAppUser" />
+                <ScalarProperty Name="gtAppDate" ColumnName="gtAppDate" />
+                <ScalarProperty Name="gtAdjUser" ColumnName="gtAdjUser" />
+                <ScalarProperty Name="gtAdjDate" ColumnName="gtAdjDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GTTimePeriod">
+            <EntityTypeMapping TypeName="PEIS_DATABASEModel.GTTimePeriod">
+              <MappingFragment StoreEntitySet="GTTimePeriod">
+                <ScalarProperty Name="gtID" ColumnName="gtID" />
+                <ScalarProperty Name="gtStart" ColumnName="gtStart" />
+                <ScalarProperty Name="gtFinish" ColumnName="gtFinish" />
+                <ScalarProperty Name="gtStatus" ColumnName="gtStatus" />
+                <ScalarProperty Name="gtStatusDate" ColumnName="gtStatusDate" />
+                <ScalarProperty Name="gtStatusBy" ColumnName="gtStatusBy" />
+                <ScalarProperty Name="gtIsOpen" ColumnName="gtIsOpen" />
+                <ScalarProperty Name="gtDoPopulate" ColumnName="gtDoPopulate" />
+                <ScalarProperty Name="gtDoPost" ColumnName="gtDoPost" />
+                <ScalarProperty Name="gtCreatedUser" ColumnName="gtCreatedUser" />
+                <ScalarProperty Name="gtCreatedDate" ColumnName="gtCreatedDate" />
+                <ScalarProperty Name="gtLockedBy" ColumnName="gtLockedBy" />
+                <ScalarProperty Name="gtLockedByDate" ColumnName="gtLockedByDate" />
+                <ScalarProperty Name="gtLastUpdateUser" ColumnName="gtLastUpdateUser" />
+                <ScalarProperty Name="gtLastUpdateDate" ColumnName="gtLastUpdateDate" />
+                <ScalarProperty Name="gtDoReplicate" ColumnName="gtDoReplicate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GTTimeSheet">
+            <EntityTypeMapping TypeName="PEIS_DATABASEModel.GTTimeSheet">
+              <MappingFragment StoreEntitySet="GTTimeSheet">
+                <ScalarProperty Name="gtID" ColumnName="gtID" />
+                <ScalarProperty Name="gtTimePeriodID" ColumnName="gtTimePeriodID" />
+                <ScalarProperty Name="gtResourceID" ColumnName="gtResourceID" />
+                <ScalarProperty Name="gtStatus" ColumnName="gtStatus" />
+                <ScalarProperty Name="gtMngrComments" ColumnName="gtMngrComments" />
+                <ScalarProperty Name="gtUserComments" ColumnName="gtUserComments" />
+                <ScalarProperty Name="gtTotalHour" ColumnName="gtTotalHour" />
+                <ScalarProperty Name="gtInstanceID" ColumnName="gtInstanceID" />
+                <ScalarProperty Name="gtTRReview" ColumnName="gtTRReview" />
+                <ScalarProperty Name="gtTotalPlan" ColumnName="gtTotalPlan" />
+                <ScalarProperty Name="gtTaskDelay" ColumnName="gtTaskDelay" />
+                <ScalarProperty Name="gtTaskProposed" ColumnName="gtTaskProposed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>

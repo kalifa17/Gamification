@@ -1,0 +1,212 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript">
+    /*    $(document).ready(function() {
+            $("#rcrType").tokenInput("http://shell.loopj.com/tokeninput/tvshows.php", {
+                theme: "facebook"
+            });
+        });*/
+
+        $(function () {
+            $("#dateStart").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+
+        $(function () {
+            $("#dateEnd").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+
+
+
+        var LicSoftList = {
+            arr: []
+        };
+
+        $.blockUI({
+            css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#FFFFFF'
+            }
+        });
+        
+        $.ajax({
+            url: "/Home/getRCRTypes/",
+            dataType: "json",
+            complete: function () {
+                $.unblockUI();
+            },
+            success: function (data) {
+                $.map(jQuery.parseJSON(data), function (item) {
+                    LicSoftList.arr.push({
+                        "id": item,
+                        "name": item
+                    });
+                });
+                $("#rcrType").tokenInput(LicSoftList.arr, {
+                    theme: "facebook"
+                });
+            }
+        });
+
+        function getLeaderboard() {
+            //alert("getLeaderboard");
+
+            $.blockUI({
+                css: {
+                    border: 'none',
+                    padding: '15px',
+                    backgroundColor: '#000',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .5,
+                    color: '#FFFFFF'
+                }
+            });
+
+            //Get Selected items
+            var IAList = new Array();
+            var selected1 = $("#rcrType").tokenInput("get");
+            var k = 0;
+            for (i = 0; i < selected1.length; i++) {
+                IAList[k] = selected1[i].name;
+                k++;
+            }
+
+            var requestData = {
+                dateEnd: $("#dateEnd").val(),
+                dateStart: $("#dateStart").val(),
+                rcrTypes: IAList
+            };
+
+            $.ajax({
+                url: '/Home/getLeaderboard/',
+                type: 'POST',
+                data: JSON.stringify({ leaderboard: requestData }),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                complete: function () {
+                    $.unblockUI();
+                },
+                error: function (xhr) {
+                    alert('Error: ' + xhr.statusText);
+                },
+                success: function (result) {
+                    paintLeaderBoard(result);
+                },
+                async: true,
+                processData: false
+            });
+        }
+        var cont = 1;
+        function paintLeaderBoard(result) {
+            //Clean Leaderboard
+            var i = 1;
+            while (true) {
+                if ($('#' + i).length) {
+                    $('#' + i).remove();
+                    i++;
+                } else {
+                    break;
+                }
+            }
+            cont = 1;
+            $.map(jQuery.parseJSON(result), function (item) {
+               // alert(item.iconPath);
+                var newRow = $("<div class='row' id='"+cont+"'><div class='position'><img src='../Images/"+cont+".png' style='width:50%;height:50%'/></div><div class='column'><h4>"+item.username+"</h4></div><div class='column'><img src='"+item.iconPath+"'/></div><div class='column'><h4>"+item.rcrsDone+"</h4></div><div class='column'><h4>"+item.score+"</h4></div><div class='column'><h4>"+item.efficiency+"</h4></div></div>");
+                $(newRow).fadeIn("slow").appendTo("#leaderboard");
+                cont++;
+            });
+        }
+        
+</script>
+
+
+
+@section featured {
+<section class="featured">
+    <div class="content-wrapper">
+        <hgroup class="title">
+            <!-- <h1>@ViewBag.Title.</h1> -->
+            <h2>Tipo de RCR: <input type="text" id="rcrType"/></h2>
+            <h2>Fecha Inicio: <input type="text" id="dateStart" name="dateStart"/></h2>
+            <h2>Fecha Fin: <input type="text" id="dateEnd"/></h2>
+            <button onclick="getLeaderboard()">Consultar</button>
+        </hgroup>
+    </div>
+</section>
+}
+
+
+<div class="row">
+        <div class="position">
+            <h5>&nbsp</h5>
+        </div>
+        <div class="column">
+            <h5>Nombre</h5>
+        </div>
+         <div class="column">
+            <h5>ICON</h5>
+        </div>
+        <div class="column">
+            <h5>RCRs Atendidos</h5>
+        </div>
+        <div class="column">
+            <h5>Puntuación</h5>
+        </div>
+        <div class="column">
+            <h5>Eficiencia</h5>
+        </div>
+</div>
+<div>&nbsp</div>
+<div id="leaderboard">
+<!--
+<div class="row" id="2">
+        <div class="position">
+            <img src="../Images/1.png" style="width:50%;height:50%;"/>
+        </div>
+        <div class="column">
+            <h4>Edgar Nomesque</h4>
+        </div>
+         <div class="column">
+             <img src="../Images/Avatars/coenomesque.png" />
+        </div>
+        <div class="column">
+            <h4>5</h4>
+        </div>
+        <div class="column">
+            <h4>12.5</h4>
+        </div>
+        <div class="column">
+            <h4>3.7</h4>
+        </div>
+</div>
+    -->
+</div>
+<!--
+<ol class="round">
+    
+    
+    <li class="two">
+        <h5>Add NuGet packages and jump start your coding</h5>
+        NuGet makes it easy to install and update free libraries
+    </li>
+    <li class="three">
+        <h5>Setup deployment to your web server</h5>
+        Use Microsoft Web Deploy to quickly and easily publish
+    </li>
+</ol>
+-->
